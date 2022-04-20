@@ -1,0 +1,6 @@
+# File  : .gitignore
+# Author: lchannng <l.channng@gmail.com>
+# Date  : 2022/04/20 00:36:46
+
+build
+vcpkg
