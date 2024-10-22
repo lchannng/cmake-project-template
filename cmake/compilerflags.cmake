@@ -1,4 +1,10 @@
 if(MSVC)
+    # Clear the default content of CMAKE_MSVC_RUNTIME_LIBRARY
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "")
+
+	# Set the compiler options for the static multithreaded version.
+	add_compile_options($<$<CONFIG:>:/MT> $<$<CONFIG:Debug>:/MTd> $<$<CONFIG:Release>:/MT>)
+
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
     # Force to always compile with W4
     if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")

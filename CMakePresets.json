@@ -1,0 +1,98 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    },
+    {
+      "name": "linux-x64",
+      "inherits": "default",
+      "hidden": true,
+      "generator": "Unix Makefiles",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-linux"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "windows-x64",
+      "inherits": "default",
+      "hidden": true,
+      "generator": "Visual Studio 17 2022",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-windows-static"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "linux-x64-static-debug",
+      "inherits": "linux-x64",
+      "description": "Static debug build for Linux x64",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "linux-x64-static-release",
+      "inherits": "linux-x64",
+      "description": "Static release build for Linux x64",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "windows-x64-static-debug",
+      "inherits": "windows-x64",
+      "description": "Static debug build for Windows x64",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "windows-x64-static-release",
+      "inherits": "windows-x64",
+      "description": "Static release build for Windows x64",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "linux-x64-static-debug",
+      "configurePreset": "linux-x64-static-debug"
+    },
+    {
+      "name": "linux-x64-static-release",
+      "configurePreset": "linux-x64-static-release"
+    },
+    {
+      "name": "windows-x64-static-debug",
+      "configurePreset": "windows-x64-static-debug"
+    },
+    {
+      "name": "windows-x64-static-release",
+      "configurePreset": "windows-x64-static-release"
+    }
+  ]
+}
+
