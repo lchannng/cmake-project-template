@@ -1,0 +1,22 @@
+# File  : .clang-format
+# Author: lchannng <l.channng@gmail.com>
+# Date  : 2022/04/23 22:55:57
+
+# clang-format style configuration
+#
+# For more information about each option, pleaser refer to the official documentation
+# http://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+# We'll use defaults from the google style, but with 4 columns indentation.
+BasedOnStyle: Google
+IndentWidth: 4
+UseTab: Never
+
+---
+Language: Cpp
+AccessModifierOffset: -4
+AllowShortFunctionsOnASingleLine: Inline
+DerivePointerAlignment: false
+PointerAlignment: Right
+ColumnLimit: 0
+...
